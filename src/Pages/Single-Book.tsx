@@ -2,7 +2,7 @@ import {
   useGetSingleBookQuery,
   useDeleteBookMutation,
 } from "@/redux/api/baseApi";
-import {  Edit, Trash2, LoaderPinwheel } from "lucide-react";
+import {  Edit, Trash2, LoaderPinwheel, Flower } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -61,13 +61,13 @@ const BookDetailsPage = () => {
   };
 
   return (
-    <div className="container max-w-7xl mx-auto px-4 py-10  flex justify-center items-center">
-      <Card className="shadow-xl p-6 space-y-6 border border-gray-200">
-        <div className="flex justify-between items-center">
+    <div className="container w-full  mx-auto px-4 py-10  flex justify-center items-center">
+      <Card className="shadow-xl p-6 space-y-6 border border-gray-200 w-full">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-y-5">
           <h1 className="text-4xl font-extrabold text-primary tracking-tight text-wrap">
             {book.title}
           </h1>
-          <div className="flex gap-2">
+          <div className="flex flex-col md:flex-row gap-2">
             <Button
               variant="outline"
               onClick={() => navigate(`/edit-book/${book._id}`)}
@@ -86,6 +86,12 @@ const BookDetailsPage = () => {
               ) : (
                 "Delete"
               )}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => navigate(`/borrow/${book._id}`)}
+            >
+              <Flower className="w-4 h-4 mr-1" /> Borrow this book
             </Button>
           </div>
         </div>
